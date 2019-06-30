@@ -4,8 +4,8 @@ Check out official [Druid website](https://druid.apache.org/).
 
 ## Tags
 
-- 1.0.0-druid-0.15.0
-- 1.0.0-druid-0.14.0
+- 1.1.0-druid-0.15.0
+- 1.1.0-druid-0.14.0
 
 Check [DockerHub](https://hub.docker.com/r/canelmas/druid/tags) for complete list.
 
@@ -50,7 +50,7 @@ services:
       - druid-net
 
   historical:    
-    image: canelmas/druid:1.0.0-druid-0.15.0
+    image: canelmas/druid:1.1.0-druid-0.15.0
     command: historical
     ports:
       - 8083:8083
@@ -71,7 +71,7 @@ services:
       - druid-net
 
   broker:
-    image: canelmas/druid:1.0.0-druid-0.15.0
+    image: canelmas/druid:1.1.0-druid-0.15.0
     command: broker
     ports:
       - 8082:8082
@@ -92,7 +92,7 @@ services:
       - druid-net
 
   coordinator:
-    image: canelmas/druid:1.0.0-druid-0.15.0
+    image: canelmas/druid:1.1.0-druid-0.15.0
     command: coordinator
     ports:
       - 8081:8081
@@ -113,7 +113,7 @@ services:
       - druid-net
 
   overlord:
-    image: canelmas/druid:1.0.0-druid-0.15.0
+    image: canelmas/druid:1.1.0-druid-0.15.0
     command: overlord
     ports:
       - 8090:8090
@@ -134,7 +134,7 @@ services:
       - druid-net
       
   router:
-    image: canelmas/druid:1.0.0-druid-0.15.0
+    image: canelmas/druid:1.1.0-druid-0.15.0
     command: router
     ports:
       - 8888:8888
@@ -157,7 +157,7 @@ services:
       - druid-net
   
   middleManager:
-    image: canelmas/druid:1.0.0-druid-0.15.0
+    image: canelmas/druid:1.1.0-druid-0.15.0
     command: middleManager
     ports:
       - 8091:8091
