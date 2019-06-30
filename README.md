@@ -1,5 +1,3 @@
-# druid-docker
-
 Sample stack
 
 ```yml
@@ -168,7 +166,7 @@ services:
       - druid-net    
 ```
 
-Configuration files structure
+Configuration files structure:
 
 ```bash
 conf-druid
