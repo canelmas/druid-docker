@@ -1,30 +1,18 @@
-FROM openjdk:8-jre
+#!/bin/bash -eu
 
-LABEL maintainer="Can Elmas <canelm@gmail.com>"
+if [[ $# -lt 1 ]]; then
+  echo "Usage: node.sh nodeType"
+  exit 1
+fi
 
-ENV DRUID_HOME=/opt/druid
+nodeType="$1"
+shift
 
-ARG DRUID_VERSION=0.14.0
-
-# druid
-RUN curl -O http://ftp.itu.edu.tr/Mirror/Apache/incubator/druid/${DRUID_VERSION}-incubating/apache-druid-${DRUID_VERSION}-incubating-bin.tar.gz \
-    && tar xzf apache-druid-${DRUID_VERSION}-incubating-bin.tar.gz \ 
-    && mkdir -p ${DRUID_HOME} \
-    && mv apache-druid-${DRUID_VERSION}-incubating druid \
-    && mv druid /opt    
-
-# mysql connector
-RUN curl -O http://central.maven.org/maven2/mysql/mysql-connector-java/5.1.38/mysql-connector-java-5.1.38.jar \
-    && mv mysql-connector-java-5.1.38.jar ${DRUID_HOME}/extensions/mysql-metadata-storage
-
-COPY start.sh ${DRUID_HOME}/bin/start.sh
-
-RUN mkdir -p ${DRUID_HOME}/var/tmp
-
-VOLUME ${DRUID_HOME}/var
-
-WORKDIR $DRUID_HOME
-
-EXPOSE 8081-8083 8888 8090
-
-ENTRYPOINT ["bin/start.sh"]
+exec java \
+  $(cat /opt/druid/conf/druid/${nodeType}/jvm.config | xargs) \
+  -cp /opt/druid/conf/druid/_common:/opt/druid/conf/druid/${nodeType}:/opt/druid/lib/* \
+  -Ddruid.extensions.directory="/opt/druid/extensions" \
+  "$@" \
+  org.apache.druid.cli.Main \
+  server \
+  $nodeType
