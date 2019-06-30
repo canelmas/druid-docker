@@ -1,4 +1,15 @@
-Sample stack
+## What's Druid?
+
+Check out official [Druid website](https://druid.apache.org/).
+
+## Tags
+
+- 1.0.0-druid-0.15.0
+- 1.0.0-druid-0.14.0
+
+Check [DockerHub](https://hub.docker.com/r/canelmas/druid/tags) for complete list.
+
+## Sample stack
 
 ```yml
 version: '3.7'
@@ -166,7 +177,7 @@ services:
       - druid-net    
 ```
 
-Configuration files structure:
+## Configuration
 
 ```bash
 conf-druid
