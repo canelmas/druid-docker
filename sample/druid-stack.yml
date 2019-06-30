@@ -1,8 +1,3 @@
-# druid-docker
-
-Sample stack
-
-```yml
 version: '3.7'
 
 networks:
@@ -166,37 +161,3 @@ services:
           - node.labels.node.type == ingestion
     networks: 
       - druid-net    
-```
-
-Configuration files structure
-
-```bash
-conf-druid
-└── druid
-    ├── _common
-    │   ├── common.runtime.properties
-    │   └── log4j2.xml
-    ├── broker
-    │   ├── jvm.config
-    │   ├── main.config
-    │   └── runtime.properties
-    ├── coordinator
-    │   ├── jvm.config
-    │   ├── main.config
-    │   └── runtime.properties
-    ├── historical
-    │   ├── jvm.config
-    │   ├── main.config
-    │   └── runtime.properties
-    ├── middleManager
-    │   ├── jvm.config
-    │   ├── main.config
-    │   └── runtime.properties
-    ├── overlord
-    │   ├── jvm.config
-    │   ├── main.config
-    │   └── runtime.properties
-    └── router
-        ├── jvm.config
-        └── runtime.properties
-```
